@@ -18,6 +18,15 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Users Management</title>
+    <script>
+        (function () {
+            const theme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (theme === 'dark' || (!theme && prefersDark)) {
+                document.documentElement.classList.add('dark-mode');
+            }
+        })();
+    </script>
     <link rel="stylesheet" href="<?php echo $base_url; ?>/assets/css/style.css">
 </head>
 
@@ -66,7 +75,8 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                         <div style="font-weight:600;"><?php echo htmlspecialchars($u['full_name']); ?></div>
                                         <div style="font-size:0.85rem; color:var(--text-muted);">
                                             <?php echo htmlspecialchars($u['email']); ?>
-                                            (@<?php echo htmlspecialchars($u['username']); ?>)</div>
+                                            (@<?php echo htmlspecialchars($u['username']); ?>)
+                                        </div>
                                     </td>
                                     <td>
                                         <?php if ($u['role'] === 'admin'): ?>

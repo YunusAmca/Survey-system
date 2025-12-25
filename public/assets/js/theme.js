@@ -6,6 +6,7 @@
 const ThemeManager = {
     init: function () {
         this.themeToggleBtn = document.getElementById('theme-toggle');
+        this.html = document.documentElement;
         this.body = document.body;
         this.loadTheme();
 
@@ -19,9 +20,11 @@ const ThemeManager = {
         const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
         if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+            this.html.classList.add('dark-mode');
             this.body.classList.add('dark-mode');
             this.updateIcon(true);
         } else {
+            this.html.classList.remove('dark-mode');
             this.body.classList.remove('dark-mode');
             this.updateIcon(false);
         }
@@ -29,6 +32,7 @@ const ThemeManager = {
 
     toggleTheme: function () {
         const isDark = this.body.classList.toggle('dark-mode');
+        this.html.classList.toggle('dark-mode');
         localStorage.setItem('theme', isDark ? 'dark' : 'light');
         this.updateIcon(isDark);
     },

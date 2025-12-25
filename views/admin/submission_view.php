@@ -33,6 +33,15 @@ $answers = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Submission #<?php echo $sub_id; ?></title>
+    <script>
+        (function () {
+            const theme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (theme === 'dark' || (!theme && prefersDark)) {
+                document.documentElement.classList.add('dark-mode');
+            }
+        })();
+    </script>
     <link rel="stylesheet" href="<?php echo $base_url; ?>/assets/css/style.css">
     <style>
         .answer-card {
@@ -95,9 +104,11 @@ $answers = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     </div>
                     <div style="text-align:right;">
                         <div style="font-weight:600;">
-                            <?php echo htmlspecialchars($submission['username'] ?? 'Anonymous'); ?></div>
+                            <?php echo htmlspecialchars($submission['username'] ?? 'Anonymous'); ?>
+                        </div>
                         <div style="font-size:0.85rem; color:var(--text-muted);">
-                            <?php echo date('M j, Y, g:i a', strtotime($submission['submitted_at'])); ?></div>
+                            <?php echo date('M j, Y, g:i a', strtotime($submission['submitted_at'])); ?>
+                        </div>
                     </div>
                 </div>
             </div>

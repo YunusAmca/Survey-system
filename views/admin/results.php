@@ -27,6 +27,15 @@ $submissions = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Results - <?php echo htmlspecialchars($survey['title']); ?></title>
+    <script>
+        (function () {
+            const theme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (theme === 'dark' || (!theme && prefersDark)) {
+                document.documentElement.classList.add('dark-mode');
+            }
+        })();
+    </script>
     <link rel="stylesheet" href="<?php echo $base_url; ?>/assets/css/style.css">
     <style>
         .submission-row {
@@ -93,9 +102,11 @@ $submissions = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                         onclick="window.location.href='<?php echo $base_url; ?>/admin/submission?id=<?php echo $sub['id']; ?>'">
                                         <td>
                                             <div style="font-weight:600;">
-                                                <?php echo htmlspecialchars($sub['username'] ?? 'Anonymous'); ?></div>
+                                                <?php echo htmlspecialchars($sub['username'] ?? 'Anonymous'); ?>
+                                            </div>
                                             <div style="font-size:0.85rem; color:var(--text-muted);">
-                                                <?php echo htmlspecialchars($sub['full_name'] ?? '-'); ?></div>
+                                                <?php echo htmlspecialchars($sub['full_name'] ?? '-'); ?>
+                                            </div>
                                         </td>
                                         <td><?php echo date('M j, Y, g:i a', strtotime($sub['submitted_at'])); ?></td>
                                         <td style="text-align:right;">
