@@ -4,7 +4,7 @@
 // Use Railway's PostgreSQL environment variables (PGHOST, PGDATABASE, etc.)
 // Falls back to local defaults for development
 $host = getenv('PGHOST') ?: getenv('DB_HOST') ?: 'caboose.proxy.rlwy.net';
-$db = getenv('PGDATABASE') ?: getenv('DB_NAME') ?: 'servern';
+$db = getenv('PGDATABASE') ?: getenv('DB_NAME') ?: 'railway';
 $user = getenv('PGUSER') ?: getenv('DB_USER') ?: 'postgres';
 $pass = getenv('PGPASSWORD') ?: getenv('DB_PASS') ?: 'XnybzVcIEWVXgXfAAVjIlaJyGUKQaaQT';
 $port = getenv('PGPORT') ?: getenv('DB_PORT') ?: '46735';
