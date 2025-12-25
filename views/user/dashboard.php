@@ -40,7 +40,7 @@ $submissions = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <body>
 
-    <div class="container" style="max-width:800px; margin-top:40px;">
+    <div class="container" style="max-width:800px; margin-top:40px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
         <div class="card">
             <div class="flex-between mb-4">
                 <h1 style="margin:0;">My Dashboard</h1>
