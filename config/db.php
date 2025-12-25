@@ -3,11 +3,11 @@
 
 // Use Railway's PostgreSQL environment variables (PGHOST, PGDATABASE, etc.)
 // Falls back to local defaults for development
-$host = getenv('PGHOST') ?: getenv('DB_HOST') ?: 'localhost';
-$db = getenv('PGDATABASE') ?: getenv('DB_NAME') ?: 'survey_system';
+$host = getenv('PGHOST') ?: getenv('DB_HOST') ?: 'caboose.proxy.rlwy.net';
+$db = getenv('PGDATABASE') ?: getenv('DB_NAME') ?: 'servern';
 $user = getenv('PGUSER') ?: getenv('DB_USER') ?: 'postgres';
-$pass = getenv('PGPASSWORD') ?: getenv('DB_PASS') ?: '2006';
-$port = getenv('PGPORT') ?: getenv('DB_PORT') ?: '5432';
+$pass = getenv('PGPASSWORD') ?: getenv('DB_PASS') ?: 'XnybzVcIEWVXgXfAAVjIlaJyGUKQaaQT';
+$port = getenv('PGPORT') ?: getenv('DB_PORT') ?: '46735';
 
 $dsn = "pgsql:host=$host;port=$port;dbname=$db;";
 $options = [
@@ -21,4 +21,4 @@ try {
 } catch (\PDOException $e) {
     die("Database Connection Error: " . $e->getMessage());
 }
-?>
+?>postgresql://postgres:@:/railway
