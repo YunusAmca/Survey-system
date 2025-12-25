@@ -21,4 +21,3 @@ try {
 } catch (\PDOException $e) {
     die("Database Connection Error: " . $e->getMessage());
 }
-?>postgresql://postgres:@:/railway

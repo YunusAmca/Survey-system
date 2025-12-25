@@ -1,4 +1,9 @@
 {
+    "require": {
+        "php": "^8.0",
+        "ext-pdo": "*",
+        "ext-pdo_pgsql": "*"
+    },
     "scripts": {
         "start": "php -S 0.0.0.0:$PORT -t public"
     }

@@ -1,12 +1,13 @@
 <?php
-// config/db.php
-// Copy this file to db.php and fill in your database credentials
+// config/db.php - Railway/Production Compatible
 
-$host = 'localhost';
-$db = 'survey_system';
-$user = 'your_username';
-$pass = 'your_password';
-$port = "5432";
+// Use Railway's PostgreSQL environment variables (PGHOST, PGDATABASE, etc.)
+// Falls back to local defaults for development
+$host = getenv('PGHOST') ?: getenv('DB_HOST') ?: 'caboose.proxy.rlwy.net';
+$db = getenv('PGDATABASE') ?: getenv('DB_NAME') ?: 'servern';
+$user = getenv('PGUSER') ?: getenv('DB_USER') ?: 'postgres';
+$pass = getenv('PGPASSWORD') ?: getenv('DB_PASS') ?: 'XnybzVcIEWVXgXfAAVjIlaJyGUKQaaQT';
+$port = getenv('PGPORT') ?: getenv('DB_PORT') ?: '46735';
 
 $dsn = "pgsql:host=$host;port=$port;dbname=$db;";
 $options = [
@@ -20,4 +21,3 @@ try {
 } catch (\PDOException $e) {
     die("Database Connection Error: " . $e->getMessage());
 }
-?>
