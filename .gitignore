@@ -1,0 +1,28 @@
+# Dependencies
+/vendor/
+/node_modules/
+
+# Environment & Config (sensitive data)
+.env
+config/db.php
+
+# IDE & System
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Test/Debug files
+public/db_test.php
+debug_counts.php
+
+# Cache
+*.cache
+
+# Gemini artifacts (local only)
+.gemini/

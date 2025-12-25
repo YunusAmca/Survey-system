@@ -1,0 +1,365 @@
+/* public/assets/css/style.css */
+:root {
+    /* Color Palette - Light Mode */
+    --primary-hue: 220;
+    /* Deep Blue */
+    --primary-color: hsl(var(--primary-hue), 90%, 56%);
+    --primary-hover: hsl(var(--primary-hue), 90%, 46%);
+    --bg-color: hsl(210, 40%, 98%);
+    --surface-color: #ffffff;
+    --text-main: hsl(215, 27%, 20%);
+    --text-muted: hsl(215, 15%, 50%);
+    --border-color: hsl(215, 20%, 90%);
+    --success-color: hsl(150, 80%, 40%);
+    --danger-color: hsl(350, 80%, 60%);
+
+    /* Spacing & Radius */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+    /* Layout */
+    --sidebar-width: 260px;
+    --header-height: 60px;
+}
+
+body.dark-mode {
+    /* Color Palette - Dark Mode */
+    --bg-color: hsl(220, 15%, 16%);
+    --surface-color: hsl(220, 15%, 20%);
+    --text-main: hsl(220, 20%, 95%);
+    --text-muted: hsl(220, 10%, 65%);
+    --border-color: hsl(220, 15%, 30%);
+    --primary-color: hsl(var(--primary-hue), 80%, 65%);
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--text-main);
+    margin-top: 0;
+    font-weight: 700;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+a:hover {
+    color: var(--primary-hover);
+}
+
+/* --- Components --- */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: var(--shadow-sm);
+    gap: 8px;
+}
+
+.btn:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+    color: #fff;
+    text-decoration: none;
+}
+
+.btn-secondary {
+    background-color: var(--surface-color);
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+}
+
+.btn-delete {
+    background-color: transparent;
+    color: var(--danger-color);
+    border: 1px solid var(--danger-color);
+}
+
+.btn-delete:hover {
+    background-color: var(--danger-color);
+    color: #fff;
+}
+
+.btn-icon {
+    padding: 8px;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--text-muted);
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    color: var(--text-main);
+    font-size: 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+}
+
+.card {
+    background: var(--surface-color);
+    padding: 24px;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+}
+
+/* --- Layouts --- */
+
+.auth-container {
+    max-width: 440px;
+    margin: 80px auto;
+}
+
+.admin-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: var(--sidebar-width);
+    background: var(--surface-color);
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    position: fixed;
+    height: 100vh;
+    overflow-y: auto;
+    z-index: 100;
+    transition: transform 0.3s ease;
+}
+
+.sidebar h3 {
+    margin-bottom: 30px;
+    padding-left: 10px;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+.sidebar a {
+    padding: 12px 16px;
+    margin-bottom: 8px;
+    border-radius: var(--radius-sm);
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+    background-color: var(--bg-color);
+    color: var(--primary-color);
+}
+
+.main-content {
+    flex: 1;
+    margin-left: var(--sidebar-width);
+    padding: 32px;
+    max-width: 1200px;
+}
+
+/* --- Tables & Lists --- */
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: var(--surface-color);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+}
+
+th,
+td {
+    padding: 16px;
+    border-bottom: 1px solid var(--border-color);
+    text-align: left;
+}
+
+th {
+    background: var(--bg-color);
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+tr:hover td {
+    background-color: var(--bg-color);
+}
+
+/* --- Utilities --- */
+
+.flex-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mb-4 {
+    margin-bottom: 1.5rem;
+}
+
+.mb-2 {
+    margin-bottom: 0.75rem;
+}
+
+.gap-2 {
+    gap: 0.5rem;
+}
+
+.badge {
+    padding: 4px 8px;
+    border-radius: 99px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    background: var(--bg-color);
+    color: var(--text-muted);
+}
+
+/* Floating Theme Toggle */
+.theme-toggle-btn {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-lg);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    z-index: 1000;
+    transition: transform 0.2s;
+}
+
+.theme-toggle-btn:hover {
+    transform: scale(1.1);
+}
+
+/* --- Responsive Design --- */
+
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding: 16px;
+    }
+
+    .admin-layout {
+        flex-direction: column;
+    }
+
+    .mobile-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px;
+        background: var(--surface-color);
+        border-bottom: 1px solid var(--border-color);
+        position: sticky;
+        top: 0;
+        z-index: 99;
+    }
+
+    table {
+        display: block;
+        overflow-x: auto;
+    }
+
+    .hide-desktop {
+        display: flex;
+    }
+}
+
+@media (min-width: 769px) {
+    .hide-desktop {
+        display: none !important;
+    }
+}
