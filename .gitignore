@@ -4,7 +4,6 @@
 
 # Environment & Config (sensitive data)
 .env
-config/db.php
 
 # IDE & System
 .idea/
